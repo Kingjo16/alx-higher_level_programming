@@ -8,7 +8,7 @@ def weight_average(my_list=[]):
     com_wig = 0
 
     for scr, wig in my_list:
-        com_scr += scr * sig
+        com_scr += scr * wig
         com_wig += wig
 
     return com_scr / com_wig if com_wig != 0 else 0
