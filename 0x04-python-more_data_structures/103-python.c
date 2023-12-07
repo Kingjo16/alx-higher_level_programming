@@ -1,4 +1,8 @@
 #include <stdio.h>
+
+struct timespec;
+
+#include <time.h>
 #include <Python.h>
 
 /**
