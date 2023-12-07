@@ -56,8 +56,6 @@ void print_python_list(PyObject *p)
 	PyListObject *list;
 	PyObject *item;
 
-	printf("[*] Python list info\n");
-
 	list_size = ((PyVarObject *)(p))->ob_size;
 	list = (PyListObject *)p;
 
