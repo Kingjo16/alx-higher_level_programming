@@ -2,7 +2,7 @@
 
 def magic_calculation(a, b):
     totals = 0
-    for m in range(1, 3):
+    for m in range(1, 4):
         try:
             if (m > a):
                 raise (Exception('Too far'))
@@ -11,4 +11,4 @@ def magic_calculation(a, b):
         except (Exception):
             totals = (b + a)
             break
-        return (totals)
+    return (totals)
