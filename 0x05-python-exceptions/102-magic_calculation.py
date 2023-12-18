@@ -6,8 +6,9 @@ def magic_calculation(a, b):
         try:
             if m > a:
                 raise Exception('Too far')
-            totals += a ** b / m
-        except Exception:
-            totals = b + a
+            else
+                totals = (((a ** b) / m) + totals)
+        except (Exception):
+            totals = (b + a)
             break
-        return totals
+        return (totals)
