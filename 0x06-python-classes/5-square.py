@@ -4,19 +4,19 @@
 
 
 class Square:
-    """this represents a square which is new."""
+    """This represents a square which is new."""
 
     def __init__(self, size):
-        """int a new square that is new.
+        """Int a new square that is new.
 
         Args:
-            sixe(int): the siz of the square.
+            size(int): the siz of the square.
         """
         self.size = size
 
     @property
     def size(self):
-        """it set a new size to a current sie of sq."""
+        """It set a new size to a current sie of sq."""
         return (self.__size)
 
     @size.setter
@@ -36,13 +36,13 @@ class Square:
         self.__size = value
 
     def area(self):
-        """This Return the area of the sq"""
+        """Return the area of the sq."""
         return (self.__size * self.__size)
 
     def my_print(self):
-        """PRints a square using the has char."""
+        """Print a square using the has char."""
+        for i in range(0, self.__size):
+            [print("#", end="") for j in range(self.__size)]
+            print("")
         if self.__size == 0:
             print("")
-        else:
-            for m int range(self.__size):
-                print("#"*self.__size)
