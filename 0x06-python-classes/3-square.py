@@ -1,11 +1,13 @@
 #!/usr/bin/python3
+
 """This Define a class Square."""
+
 
 
 class Square:
     """This reprsent the square."""
 
-    def __init__(self, size=0):
+    def __init__(self, size = 0):
         """
         Initializes a new instance of the Square class.
 
