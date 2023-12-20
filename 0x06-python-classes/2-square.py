@@ -7,7 +7,7 @@ class Square:
     This class also defines a square
 
     Attributes:
-        size : instance attribue
+        __size (int): the instance attribue
     """
 
     def __init__(self, size=0):
@@ -15,7 +15,10 @@ class Square:
         This is an instantiation with option.
 
         Args:
-            size (int): The size of the new square.
+            size (int, optional): The size of the new square.
+        Raises:
+            TypeError: size is not an int
+            ValueError: If size is less than 0
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
