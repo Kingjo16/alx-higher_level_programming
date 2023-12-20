@@ -12,7 +12,10 @@ class Square:
 
     def __init__(self, size=0):
         """
-        this is an instantiation with option.
+        This is an instantiation with option.
+
+        Args:
+            size (int): The size of the new square.
         """
         if type(size) is not int:
              raise TypeError("size must be an integer")
