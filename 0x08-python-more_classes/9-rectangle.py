@@ -6,6 +6,7 @@ class Rectangle:
     """Define a rectangle for 2-rectangle.py."""
 
     number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """Initialize a width and height of the rectangle."""
@@ -51,6 +52,21 @@ class Rectangle:
         """Perimeter of the rectangle."""
         return 2 * (self.__width + self.__height)
 
+    def bigger_or_equal(rect_1, rect_2):
+        """Return Greater or Equal area."""
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return (rect_1)
+        return (rect_2)
+
+    @classmethod
+    def square(cls, size=0):
+        """Return a Rectangle wiche id new width with a size of Size."""
+        return (cls(size, size))
+
     def __str__(self):
         """Represent a string of the rectangle will be returned."""
         if self.__width == 0 or self.__height == 0:
@@ -58,7 +74,7 @@ class Rectangle:
 
         rep = []
         for m in range(self.__height):
-            [rep.append('#') for j in range(self.__width)]
+            [rep.append(str(self.print_symbol)) for j in range(self.__width)]
             if m != self.__height - 1:
                 rep.append("\n")
         return ("".join(rep))
@@ -70,6 +86,6 @@ class Rectangle:
         return rep
 
     def __del__(self):
-        """Message printer for every delated of a Rectangle."""
+        """Delate a rectangle."""
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
