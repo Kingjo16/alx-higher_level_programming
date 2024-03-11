@@ -1,0 +1,1 @@
+javascript initial practice
