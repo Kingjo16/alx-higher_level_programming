@@ -1,4 +1,4 @@
-#!/usr/bin/pyhton3
+#!/usr/bin/python3
 
 import sys
 import MySQLdb
@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
 
     db = MySQLdb.connect(host="localhost", port=3306, user=username,
-                         passwd=password, db=databas)
+                         passwd=password, db=database)
 
     cursordb = db.cursor()
     cursordb.execute("SELECT * FROM states")
