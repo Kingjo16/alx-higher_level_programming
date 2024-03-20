@@ -17,7 +17,7 @@ if __name__ == "__main__":
     cursordb = db.cursor()
     cursordb.execute("SELECT * FROM states \
                  WHERE name LIKE BINARY '{}' \
-                 ORDER BY states.id ASC".format(argv[4]))
+                 ORDER BY states.id ASC".format(state_name))
 
     rows = cursordb.fetchall()
 
