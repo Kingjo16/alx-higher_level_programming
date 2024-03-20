@@ -15,14 +15,11 @@ if __name__ == "__main__":
                          db=database, port=3306)
 
     cursordb = db.cursor()
-    cursordb.execute("SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
-                     .format(state_name))
+    cursordb.execute("SELECT * FROM states \
+                 WHERE name LIKE BINARY '{}' \
+                 ORDER BY states.id ASC".format(argv[4]))
 
     rows = cursordb.fetchall()
 
-    for row in rows:
-        print(row)
-
-    cursordb.close()
-    db.close()
-
+    for R in rows:
+        print(R)
