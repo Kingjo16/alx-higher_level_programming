@@ -19,8 +19,6 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     s = Session()
 
-    ci = s.query(City, State).filter(City.state_id == State.id)
-         .order_by(City.id).all()
-
-    for city, sta in ci:
-        print("{}: ({}) {}".format(sta.name, city.id, city.name))
+    for inst in (s.query(State.name, City.id, City.name)
+                     .filter(State.id == City.state_id)):
+        print(inst[0] + ": (" + str(inst[1]) + ") " + inst[2])
