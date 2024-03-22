@@ -18,8 +18,11 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     se = Session()
-    state_name = State(name='Louisiana')
-    se.add(state_name)
-    ins_news = se.query(State).filter_by(name='Louisiana').first()
-    print(ins_news.id)
+    
+    new_State = State(name='California')
+    new_City = City(name='San Francisco')
+    new_State.cities.append(new_City)
+
+    se.add(new_State)
+    se.add(new_City)
     se.commit()
