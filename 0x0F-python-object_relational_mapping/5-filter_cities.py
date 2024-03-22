@@ -21,6 +21,7 @@ if __name__ == "__main__":
                      WHERE states.name=%s""", (state_name,))
 
     rows = cursordb.fetchall()
-    print(*row_list, sep=", ")
+    trap = list(row[0] for row in rows)
+    print(*trap, sep=", ")
     cursordb.close()
     db.close()
