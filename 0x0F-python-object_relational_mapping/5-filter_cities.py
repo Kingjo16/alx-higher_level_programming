@@ -14,25 +14,15 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", user=username, passwd=password,
                          db=database, port=3306)
 
-    with db.cursor() as cur:
-        cur.execute("""
-            SELECT
-                cities.id, cities.name
-            FROM
-                cities
-            JOIN
-                states
-            ON
-                cities.state_id = states.id
-            WHERE
-                states.name LIKE BINARY %(state_name)s
-            ORDER BY
-                cities.id ASC
-        """, {
-            'state_name': state_name
-        })
+    cursordb = db.cursor()
+    cursordb.execute("SELECT cities.name FROM
+                     cities JOIN states ON cities.state_id = states.id
+                     WHERE states.name=%s ORDER BY cities.id ASC",
+                      (state_name,))
+    ro = cursordb.fetchall()
+    ciy = [row[0] for row in ro]
 
-        rows = cur.fetchall()
+    print(", ".join(ciy))
 
-    if giv_r is not None:
-        print(", ".join([giv_r[1] for giv_r in rows]))
+    cursordb.close()
+    db.close()
