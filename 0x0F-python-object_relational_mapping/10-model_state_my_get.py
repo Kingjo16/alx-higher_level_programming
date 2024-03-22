@@ -19,9 +19,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     s = Session()
 
-    st = s.query(State).filter(State.name == state_name).first()
-
-    if st:
-        print(st.id)
-    else:
+    st = s.query(State).filter(State.name == (state_name,))
+    try:
+        print(st[0].id)
+    except IndexError:
         print("Not found")
