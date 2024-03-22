@@ -10,18 +10,29 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
     state_name = sys.argv[4]
-    row_list = list(row[0] for row in rows)
 
     db = MySQLdb.connect(host="localhost", user=username, passwd=password,
                          db=database, port=3306)
 
-    cursordb = db.cursor()
-    cursordb.execute("""SELECT cities.name FROM
-                     cities INNER JOIN states ON states.id=cities.state_id
-                     WHERE states.name=%s""", (state_name,))
+    with db.cursor() as cur:
+        cur.execute("""
+            SELECT
+                cities.id, cities.name
+            FROM
+                cities
+            JOIN
+                states
+            ON
+                cities.state_id = states.id
+            WHERE
+                states.name LIKE BINARY %(state_name)s
+            ORDER BY
+                cities.id ASC
+        """, {
+            'state_name': state_name
+        })
 
-    rows = cursordb.fetchall()
-    trap = list(row[0] for row in rows)
-    print(*trap, sep=", ")
-    cursordb.close()
-    db.close()
+        rows = cur.fetchall()
+
+    if giv_r is not None:
+        print(", ".join([giv_r[1] for giv_r in rows]))
