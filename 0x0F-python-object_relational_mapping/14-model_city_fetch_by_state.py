@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Prints all City objects from the database hbtn_0e_14_usa"""
+"""Prints all City objects from the database hbtn_0e_14_usa."""
 
 import sys
 from sqlalchemy import create_engine
@@ -20,5 +20,5 @@ if __name__ == "__main__":
     s = Session()
 
     for inst in (s.query(State.name, City.id, City.name)
-                     .filter(State.id == City.state_id)):
+                 .filter(State.id == City.state_id)):
         print(inst[0] + ": (" + str(inst[1]) + ") " + inst[2])
