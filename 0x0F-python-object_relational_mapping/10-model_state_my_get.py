@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Name pased in the dtaabase in the argu."""
+"""Name pased in the dtaabase in the argu."""
 import sys
 from model_state import Base, State
 from sqlalchemy import (create_engine)
