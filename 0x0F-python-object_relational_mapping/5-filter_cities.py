@@ -15,14 +15,11 @@ if __name__ == "__main__":
                          db=database, port=3306)
 
     cursordb = db.cursor()
-    cursordb.execute("SELECT cities.name FROM
-                     cities JOIN states ON cities.state_id = states.id
-                     WHERE states.name=%s ORDER BY cities.id ASC",
-                      (state_name,))
+    cursordb.execute("""SELECT cities.name FROM
+                     cities INNER JOIN states ON states.id=cities.state_id
+                     WHERE states.name=%s""", (state_name,))
     ro = cursordb.fetchall()
     ciy = [row[0] for row in ro]
-
-    print(", ".join(ciy))
-
+    print(*ciy, sep=", ")
     cursordb.close()
     db.close()
