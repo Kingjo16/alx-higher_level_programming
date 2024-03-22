@@ -1,16 +1,16 @@
 #!/usr/bin/python3
-""" Name pased in the dtaabase in the argu."""
-import sys
-from model_state import Base, State
-from sqlalchemy import (create_engine)
-from sqlalchemy.orm import sessionmaker
+"""Prints a State obje with the name passed as an argument."""
 
+import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
 
 if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    state_name = sys.argv[4]
+    new_state = State(name="Louisiana")
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(username, password, db_name))
@@ -18,10 +18,7 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     s = Session()
+    s.add(new_state)
+    s.commit()
 
-    st = s.query(State).filter(State.name == state_name).first()
-
-    if st:
-        print(st.id)
-    else:
-        print("Not found")
+    print(new_state.id)
