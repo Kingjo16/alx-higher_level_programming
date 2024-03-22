@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all State link from the database."""
+"""Lists all State objects that contain the letter a"""
 
 import sys
 from sqlalchemy import create_engine
@@ -16,9 +16,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
-    session = Session()
+    s = Session()
 
-    states = session.query(State).order_by(State.id).all()
+    st = s.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
 
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    for sta in st:
+        print("{}: {}".format(sta.id, sta.name))
