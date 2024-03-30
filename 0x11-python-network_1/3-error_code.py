@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""
-A script that takes in a URL and sends a request to the URL
-and displays the body of the response (decoded in utf-8).
-"""
+"""This is the script that will response to (decoded in utf-8)."""
 
 
 if __name__ == "__main__":
